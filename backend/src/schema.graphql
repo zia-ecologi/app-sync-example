@@ -1,0 +1,61 @@
+type Mutation {
+  updateUser(id: String!, description: String, name: String): User!
+  updateCustomer(id: String!, data: CustomerInput!): Customer
+}
+
+type Query {
+  users(id: String): User!
+  customers: [Customer]
+}
+
+type User {
+  name: String!
+  id: String!
+  description: String!
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Address {
+  street: String
+  city: String
+  state: String
+  zipCode: String
+}
+
+type CreditCard {
+  network: String!
+  number: String!
+}
+
+type Customer {
+  id: String!
+  lastName: String!
+  firstName: String!
+  creditCard: CreditCard!
+  address: Address!
+  telephone: String!
+}
+
+input CreditCardInput {
+  network: String!
+  number: String!
+}
+
+input CustomerInput {
+  firstName: String
+  lastName: String
+  address: AddressInput
+  telephone: String
+  creditCard: CreditCardInput
+}
+
+input AddressInput {
+  street: String
+  city: String
+  state: String
+  zipCode: String
+}

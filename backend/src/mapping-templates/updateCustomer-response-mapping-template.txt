@@ -1,0 +1,5 @@
+#if( $context.result && $context.result.error_message )
+    $util.error($context.result.error_message, $context.result.error_type, $context.result.error_data)
+#else
+    $util.toJson($context.result)
+#end
